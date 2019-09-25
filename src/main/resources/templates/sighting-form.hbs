@@ -1,0 +1,59 @@
+{{#partial "content"}}
+
+    {{#if editSighting}}
+        <h1>Edit this sighting!</h1>
+        <form action="/sightings/{{sighting.id}}" method="post">
+        <br>
+            <label for="location">Edit this sighting's location</label>
+            <select id="location" name="location">
+                <option value="zoneA"> zone A</option>
+                <option value="nearTheRiver"> Near the River</option>
+                <option value="neQuadrant"> NE Quadrant</option>
+            </select>
+        <br>
+          <br>
+              <label for="rangerName">Edit this sighting's rangerName</label>
+               <input id="rangerName" name="rangerName" type="text" value="{{sighting.location}}">
+                <br>
+            <label for="animalId">Update this sighting's animal:</label>
+            <select id="animalId" name="animalId">
+                {{#each animals}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+            <p>Don't see the right animal?<a href="/animals/new">Add a new one first.</a></p>
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
+    {{else}}
+        <h2>Add a new sighting!</h2>
+
+        <form action="/sightings" method="post">
+            {{#if animals}}
+                   <br>
+                        <label for="location">Edit this sighting's location</label>
+                        <select id="location" name="location">
+                            <option value="zoneA"> zone A</option>
+                            <option value="nearTheRiver"> Near the River</option>
+                            <option value="neQuadrant"> NE Quadrant</option>
+                        </select>
+                    <br>
+                      <br>
+                          <label for="rangerName">Edit this sighting's rangerName</label>
+                           <input id="rangerName" name="rangerName" type="text" value="{{sighting.location}}">
+                            <br>
+            <label for="animalId">Categorize this sighting as:</label>
+                <select id="animalId" name="animalId">
+                    {{#each animals}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+                <p>Don't see the right animal?<a href="/animals/new">Add a new one first.</a></p>
+            {{else}}
+                <h3> You'll need to add a animal before you add a sighting. <a href="/animals/new">Add one here.</a> </h3>
+            {{/if}}
+            <button type="submit" class="btn btn-default">Go!</button>
+        </form>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

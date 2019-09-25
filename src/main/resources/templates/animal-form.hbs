@@ -1,0 +1,45 @@
+{{#partial "content"}}
+    {{#if editAnimal}}
+        <h1>Edit this animal!</h1>
+        <form action="/animals/{{animal.id}}" method="post">
+            <label for="name">Edit this animal's name</label>
+            <input id="newAnimalName" name="newAnimalName" type="text" value="{{animal.name}}">
+             <label for="condition">Edit this animal's condition</label>
+             <select id="newAnimalCondition" name="newAnimalCondition">
+             <option>select</option>
+             <option value="ok">ok</option>
+             <option value="ill">ill</option>
+             <option value="healthy"> healthy </option>
+             </select>
+             <select id="newAnimalEndangered" name="newAnimalEndangered">
+             <option>select</option>
+             <option value="yes">ok</option>
+             <option value="no">ill</option>
+             </select>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    {{else}}
+        <h1>Add a new Animal!</h1>
+        <form action="/animals" method="post">
+            <label for="name"> Name</label>
+            <input id="name" name="name" type="text">
+            <label for="condition"> condition</label>
+            <select id="condition" name="condition">
+                <option>select</option>
+                <option value="ok">ok</option>
+                <option value="ill">ill</option>
+                <option value="healthy"> healthy </option>
+            </select>
+            <label for="endangered"> endangered</label>
+            <select id="endangered" name="endangered">
+                <option>select</option>
+                <option value="yes">yes</option>
+                <option value="no">no</option>
+            </select>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
